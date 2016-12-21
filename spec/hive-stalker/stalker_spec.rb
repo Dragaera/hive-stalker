@@ -16,9 +16,25 @@ module HiveStalker
     end
 
     describe '#get_player_data' do
+      it 'supports Steam IDs as input' do
+        expect { stalker.get_player_data(STEAM_ID) }.to_not raise_error
+      end
+
+      it 'supports Steam ID 3 as input' do
+        expect { stalker.get_player_data(STEAM_ID_3) }.to_not raise_error
+      end
+
+      it 'supports Steam ID 64 as input' do
+        expect { stalker.get_player_data(STEAM_ID_64) }.to_not raise_error
+      end
+
       it 'returns a PlayerData object' do
-        data = stalker.get_player_data(455990)
+        data = stalker.get_player_data(STEAM_ID)
         expect(data).to be_a PlayerData
+      end
+
+      it 'raises an exception upon invalid input' do
+        expect { stalker.get_player_data('foobar') }.to raise_error(ArgumentError)
       end
     end
   end
