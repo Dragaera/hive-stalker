@@ -15,6 +15,7 @@ module HiveStalker
     describe '#get_player_data' do
       it 'should return a hash with various information' do
         response = double(Typhoeus::Response)
+        allow(response).to receive(:success?) { true }
         allow(response).to receive(:body) { HIVE_SAMPLE_DATA }
         allow(Typhoeus).to receive(:get) { response }
 
@@ -42,6 +43,45 @@ module HiveStalker
           expect(hsh).to have_key key
           expect(hsh.fetch(key)).to eq(value)
         end
+      end
+
+      it 'should raise upon non-succesful status codes' do
+        response = double(Typhoeus::Response)
+        allow(response).to receive(:success?) { false }
+        allow(response).to receive(:code) { 500 }
+        allow(Typhoeus).to receive(:get) { response }
+
+        expect { client.get_player_data(48221310) }.to raise_error(APIError)
+      end
+
+      it 'should raise upon transport failure' do
+        response = double(Typhoeus::Response)
+        allow(response).to receive(:success?) { false }
+        allow(response).to receive(:code) { 0 }
+        allow(response).to receive(:return_message) { 'Could not connect to peer' }
+        allow(Typhoeus).to receive(:get) { response }
+
+        expect { client.get_player_data(48221310) }.to raise_error(APIError)
+      end
+
+      it 'should raise upon receiving invalid JSON' do
+        response = double(Typhoeus::Response)
+        allow(response).to receive(:success?) { true }
+        allow(response).to receive(:body) { '{ "a": 1, '}
+        allow(Typhoeus).to receive(:get) { response }
+
+
+        expect { client.get_player_data(48221310) }.to raise_error(APIError)
+      end
+
+      it 'should raise upon receiving incomplete JSON' do
+        response = double(Typhoeus::Response)
+        allow(response).to receive(:success?) { true }
+        allow(response).to receive(:body) { '{}'}
+        allow(Typhoeus).to receive(:get) { response }
+
+
+        expect { client.get_player_data(48221310) }.to raise_error(APIError)
       end
     end
   end

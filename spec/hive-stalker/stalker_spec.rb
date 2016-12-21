@@ -4,6 +4,7 @@ module HiveStalker
 
     before(:each) do
       response = double(Typhoeus::Response)
+      allow(response).to receive(:success?) { true }
       allow(response).to receive(:body) { HIVE_SAMPLE_DATA }
       allow(Typhoeus).to receive(:get) { response }
     end

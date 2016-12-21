@@ -15,23 +15,27 @@ module HiveStalker
     def get_player_data(player_id)
       raw_data = call_api(GET_PLAYER_DATA, player_id: player_id)
 
-      {
-        player_id: raw_data.fetch('pid'),
-        steam_id: raw_data.fetch('steamid'),
-        alias: raw_data.fetch('alias'),
-        score: raw_data.fetch('score'),
-        level: raw_data.fetch('level'),
-        experience: raw_data.fetch('xp'),
-        badges_enabled: raw_data.fetch('badges_enabled'),
-        badges: raw_data.fetch('badges') || [],
-        skill: raw_data.fetch('skill'),
-        time_total: raw_data.fetch('time_played'),
-        time_marine: raw_data.fetch('marine_playtime'),
-        time_alien: raw_data.fetch('alien_playtime'),
-        time_commander: raw_data.fetch('commander_time'),
-        reinforced_tier: raw_data.fetch('reinforced_tier'),
-        adagrad_sum: raw_data.fetch('adagrad_sum')
-      }
+      begin
+        {
+          player_id: raw_data.fetch('pid'),
+          steam_id: raw_data.fetch('steamid'),
+          alias: raw_data.fetch('alias'),
+          score: raw_data.fetch('score'),
+          level: raw_data.fetch('level'),
+          experience: raw_data.fetch('xp'),
+          badges_enabled: raw_data.fetch('badges_enabled'),
+          badges: raw_data.fetch('badges') || [],
+          skill: raw_data.fetch('skill'),
+          time_total: raw_data.fetch('time_played'),
+          time_marine: raw_data.fetch('marine_playtime'),
+          time_alien: raw_data.fetch('alien_playtime'),
+          time_commander: raw_data.fetch('commander_time'),
+          reinforced_tier: raw_data.fetch('reinforced_tier'),
+          adagrad_sum: raw_data.fetch('adagrad_sum')
+        }
+      rescue KeyError => e
+        raise APIError, "Incomplete JSON received from API: #{ e.message }"
+      end
     end
 
     private
@@ -40,7 +44,17 @@ module HiveStalker
       url = url % kwargs
 
       response = Typhoeus.get(url)
-      JSON.parse(response.body)
+      if response.success?
+        begin
+          JSON.parse(response.body)
+        rescue JSON::ParserError
+          raise APIError, "Invalid JSON received from API."
+        end
+      elsif response.code == 0
+        raise APIError, "Error while connecting to API: #{ response.return_message }"
+      else
+        raise APIError, "Non-success status code recieved from API: #{ response.code }"
+      end
     end
 
   end
