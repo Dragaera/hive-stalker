@@ -15,7 +15,7 @@ module HiveStalker
     describe '#get_player_data' do
       it 'should return a hash with various information' do
         response = double(Typhoeus::Response)
-        allow(response).to receive(:body) { '{"pid":455990,"steamid":48221310,"alias":"|LZ| Morrolan","score":4371,"level":12,"xp":95938,"badges_enabled":false,"badges":null,"skill":693,"time_played":33790,"marine_playtime":24110,"alien_playtime":9680,"commander_time":239,"reinforced_tier":null,"adagrad_sum":0.00938774528901076}' }
+        allow(response).to receive(:body) { HIVE_SAMPLE_DATA }
         allow(Typhoeus).to receive(:get) { response }
 
         hsh = client.get_player_data(48221310)

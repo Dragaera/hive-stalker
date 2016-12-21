@@ -8,7 +8,7 @@ glance - what to expact from upgrading to a new version.
 
 ### Added
 
-- Basic client to access player data from Hive2 API.
+- Basic client and wrappper to access player data from Hive2 API.
 
 ### Changed
 
