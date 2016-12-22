@@ -1,4 +1,5 @@
 module HiveStalker
+  # Module to convert various formats of Steam IDs into an account ID.
   module SteamID
     STEAM_ID_64_OFFSET = 61197960265728
 
@@ -7,6 +8,15 @@ module HiveStalker
     PATTERN_STEAM_ID_64 = /^765([0-9]+)$/
     PATTERN_ACCOUNT_ID = /^[0-9]{8}$/
 
+    # Convert Steam ID into account ID suitable for API calls.
+    # @param s [String] Steam ID, either of:
+    #   - Steam ID: STEAM_0:0:24110655
+    #   - Steam ID 3: U:1:48221310
+    #   - Steam ID 64: 76561198008487038
+    #   - Account ID: 48221310
+    # @return [Fixnum] Account ID
+    # @raise [ArgumentError] If the supplied string could not be converted to
+    #   an account ID.
     def self.from_string(s)
       # In case we get a fixnum.
       s = s.to_s

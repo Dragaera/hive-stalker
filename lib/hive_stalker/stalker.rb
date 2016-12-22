@@ -27,14 +27,13 @@ module HiveStalker
 
     # Retrieve statistics of a given player.
     #
-    # @param steam_id [String, Fixnum] Any supported Steam or account ID.
-    #   Supported are:
-    #     - Steam ID: STEAM_0:0:24110655
-    #     - Steam ID 3: U:1:48221310
-    #     - Steam ID 64: 76561198008487038
-    #     - Account ID: 48221310
+    # @param steam_id [String, Fixnum] Any supported Steam or account ID. 
+    #
+    #   See {SteamID.from_string} for supported formats.
     # @return [PlayerData] Object containing player statistics.
     # @raise [APIError] In case of errors communicating with the API.
+    # @raise [ArgumentError] If the supplied string could not be converted to
+    #   an account ID.
     def get_player_data(steam_id)
       account_id = SteamID.from_string(steam_id)
       PlayerData.new(@client.get_player_data(account_id))
