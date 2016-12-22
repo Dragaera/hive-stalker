@@ -1,3 +1,4 @@
 # Dev
 
-- integration tests (hitting the Hive API)
+- Integration tests (hitting the Hive API)
+- Documentation of classes
