@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
 
   spec.summary       = %q{Binding to Natural Selection 2's Hive2 ELO system}
   # spec.description   = %q{}
-  spec.homepage      = "https://bitbucket.org/Lavode/hive-stalker"
+  spec.homepage      = "https://bitbucket.org/Lavode/hivestalker"
   spec.license       = "Apache-2.0"
 
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
