@@ -20,6 +20,11 @@ module HiveStalker
         expect(steam_id).to eq 48221310
       end
 
+      it 'supports an account ID as input' do
+        steam_id = SteamID.from_string(48221310)
+        expect(steam_id).to eq 48221310
+      end
+
       it 'raises an exception upon invalid input' do
         expect { SteamID.from_string('foobar') }.to raise_error(ArgumentError)
       end
