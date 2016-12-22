@@ -18,6 +18,12 @@ glance - what to expact from upgrading to a new version.
 
 ### Removed
 
+## [0.1.1] - 2016-12-22
+
+### Fixed
+
+- PlayerData did not initialize `skill` and `alias` attributes.
+
 ## [0.1.0] - 2016-12-22
 
 ### Added

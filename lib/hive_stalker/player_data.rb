@@ -73,11 +73,13 @@ module HiveStalker
     def initialize(**kwargs)
       @player_id       = kwargs[:player_id]
       @steam_id        = kwargs[:steam_id]
+      @alias           = kwargs[:alias]
       @score           = kwargs[:score]
       @level           = kwargs[:level]
       @experience      = kwargs[:experience]
       @badges_enabled  = kwargs[:badges_enabled]
       @badges          = kwargs[:badges]
+      @skill           = kwargs[:skill]
       @time_total      = kwargs[:time_total]
       @time_marine     = kwargs[:time_marine]
       @time_alien      = kwargs[:time_alien]
