@@ -1,3 +1,4 @@
+# Todo: DRY up specs.
 module HiveStalker
   RSpec.describe Client do
     let(:client) { Client.new }

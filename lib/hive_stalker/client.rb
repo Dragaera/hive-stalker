@@ -1,17 +1,50 @@
+# coding: utf-8
+
 require 'json'
 require 'typhoeus'
 
 module HiveStalker
+  # Low-level binding to the Hive2 HTTP API.
+  # @example Basic usage
+  #   require 'hive_stalker'
+  #   client = HiveStalker::Client.new
+  #   begin
+  #     data = client.get_player_data(48221310)
+  #     puts "Playtime: #{ data[:time_total] }s"
+  #   rescue APIError => e
+  #     puts "Error when querying player data:"
+  #     puts e.message
+  #     if e.cause
+  #       puts "Caused by:"
+  #       puts e.cause.message
+  #     end
+  #   end
   class Client
+    # Default API endpoint of Hive2 API, which will be used unless overwritten.
+    # `%{{action}}` is a placeholder for the to-be-performed action.
     HIVE_ENDPOINT = 'http://hive2.ns2cdt.com/api/%{action}'
+    # Path of 'get player data' action. `%{{player_id}}` is a placeholder for
+    # the to-be-queried player's account ID.
     GET_PLAYER_DATA = 'get/playerData/%{player_id}'
 
+    # API endpoint of Hive2 API.
+    # @return [String]
     attr_reader :endpoint
 
+    # Initialize a new instance of the class.
+    #
+    # @param endpoint [String] API endpoint of Hive2 API. Defaults to
+    #   {Client::HIVE_ENDPOINT}.
+    #   Must contain `%{{action}}` as placeholder for the action.
     def initialize(endpoint: HIVE_ENDPOINT)
       @endpoint = endpoint
     end
 
+    # Retrieve statistics of a given player.
+    #
+    # @param player_id [Fixnum] Account ID for which to query data.
+    # @return [Hash<Symbol, Object>] Hash with player statistics.
+    # @raise [APIError] In case of errors communicating with the API.
     def get_player_data(player_id)
       raw_data = call_api(GET_PLAYER_DATA, player_id: player_id)
 
