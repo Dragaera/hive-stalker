@@ -12,19 +12,26 @@ glance - what to expact from upgrading to a new version.
 
 ### Fixed
 
-- The API client now converts skill values of pre-Hive2 players to an integer.
-
 ### Security
 
 ### Deprecated
 
 ### Removed
 
+
+## [0.1.2] - 2016-12-25
+
+### Changed
+
+- The API client now converts skill values of pre-Hive2 players to an integer.
+
+
 ## [0.1.1] - 2016-12-22
 
 ### Fixed
 
 - PlayerData did not initialize `skill` and `alias` attributes.
+
 
 ## [0.1.0] - 2016-12-22
 
