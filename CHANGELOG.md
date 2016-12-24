@@ -12,6 +12,8 @@ glance - what to expact from upgrading to a new version.
 
 ### Fixed
 
+- The API client now converts skill values of pre-Hive2 players to an integer.
+
 ### Security
 
 ### Deprecated

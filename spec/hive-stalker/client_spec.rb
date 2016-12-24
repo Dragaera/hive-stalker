@@ -46,6 +46,16 @@ module HiveStalker
         end
       end
 
+      it 'should convert legacy skill values to an int value' do
+        response = double(Typhoeus::Response)
+        allow(response).to receive(:success?) { true }
+        allow(response).to receive(:body) { HIVE_SAMPLE_LEGACY_DATA }
+        allow(Typhoeus).to receive(:get) { response }
+
+        hsh = client.get_player_data(33472508)
+        expect(hsh[:skill]).to eq 995
+      end
+
       it 'should raise upon non-succesful status codes' do
         response = double(Typhoeus::Response)
         allow(response).to receive(:success?) { false }
