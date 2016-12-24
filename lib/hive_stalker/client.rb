@@ -58,7 +58,11 @@ module HiveStalker
           experience: raw_data.fetch('xp'),
           badges_enabled: raw_data.fetch('badges_enabled'),
           badges: raw_data.fetch('badges') || [],
-          skill: raw_data.fetch('skill'),
+          # With legacy users (who have not played since introduction of
+          # Hive2), skill can be a float value.  Likely due to the
+          # normalization of skills, which happened shortly after Hive2 went
+          # live.
+          skill: raw_data.fetch('skill').to_i,
           time_total: raw_data.fetch('time_played'),
           time_marine: raw_data.fetch('marine_playtime'),
           time_alien: raw_data.fetch('alien_playtime'),
