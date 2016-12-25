@@ -13,6 +13,10 @@ module HiveStalker
       it 'supports SteamID 3 as input' do
         steam_id = SteamID.from_string(STEAM_ID_3)
         expect(steam_id).to eq 48221310
+
+        steam_id = SteamID.from_string('U:1:4584616')
+        expect(steam_id).to eq 4584616
+
       end
 
       it 'supports SteamID 64 as input' do
