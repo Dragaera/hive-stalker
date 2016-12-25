@@ -12,6 +12,9 @@ glance - what to expact from upgrading to a new version.
 
 ### Fixed
 
+- HiveStalker::SteamID.from_string did not support account IDs with less than
+  eight digits.
+
 ### Security
 
 ### Deprecated
