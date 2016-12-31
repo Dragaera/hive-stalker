@@ -12,14 +12,19 @@ glance - what to expact from upgrading to a new version.
 
 ### Fixed
 
-- Fixed case-sensitivity of Steam ID resolving.
-- Fixed resolving of Steam IDs of the form STEAM_1:..., as opposed to STEAM_0:...
-
 ### Security
 
 ### Deprecated
 
 ### Removed
+
+
+## [0.1.4] - 2016-12-31
+
+### Fixed
+
+- Fixed case-sensitivity of Steam ID resolving.
+- Fixed resolving of Steam IDs of the form STEAM_1:..., as opposed to STEAM_0:...
 
 
 ## [0.1.3] - 2016-12-26
