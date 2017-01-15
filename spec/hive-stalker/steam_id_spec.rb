@@ -25,6 +25,10 @@ module HiveStalker
 
         steam_id = SteamID.from_string(STEAM_ID_3_SHORT)
         expect(steam_id).to eq 4584616
+
+        # Special case, starts with 765, like an ID 64
+        steam_id = SteamID.from_string('7658014')
+        expect(steam_id).to eq 7658014
       end
 
       it 'is not case-sensitive' do
