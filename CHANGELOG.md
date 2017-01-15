@@ -12,13 +12,18 @@ glance - what to expact from upgrading to a new version.
 
 ### Fixed
 
-- Fixed account IDs starting with 765 being treated as a Steam ID 64.
-
 ### Security
 
 ### Deprecated
 
 ### Removed
+
+
+## [0.1.5] - 2016-01-15
+
+### Fixed
+
+- Fixed account IDs starting with 765 being treated as a Steam ID 64.
 
 
 ## [0.1.4] - 2016-12-31
