@@ -5,7 +5,8 @@ module HiveStalker
 
     PATTERN_STEAM_ID = /^STEAM_[0-9]:([0-9]):([0-9]+)$/i
     PATTERN_STEAM_ID_3 = /^U:([0-9]{1,2}):([0-9]+)$/i
-    PATTERN_STEAM_ID_64 = /^765([0-9]+)$/
+    # Must have at least 14 chars, else ID_64 - OFFSET would be < 0.
+    PATTERN_STEAM_ID_64 = /^765([0-9]{11,})$/
     # Not sure what its valid range is - exists with at least 7 and 8 numbers.
     PATTERN_ACCOUNT_ID = /^[0-9]+$/
 
