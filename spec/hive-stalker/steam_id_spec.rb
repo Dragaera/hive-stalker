@@ -1,15 +1,5 @@
 module HiveStalker
   RSpec.describe SteamID do
-    STEAM_ID         = 'STEAM_0:0:24110655'
-    STEAM_ID_MIXED   = 'SteAM_0:0:24110655'
-    STEAM_ID_SHORT   = 'STEAM_1:0:2691362'
-
-    STEAM_ID_3       = 'U:1:48221310'
-    STEAM_ID_3_LOWER = 'u:1:48221310'
-    STEAM_ID_3_SHORT = 'U:1:4584616'
-
-    STEAM_ID_64      = '76561198008487038'
-
     describe '::from_string' do
       it 'supports SteamID as input' do
         steam_id = SteamID.from_string(STEAM_ID)
