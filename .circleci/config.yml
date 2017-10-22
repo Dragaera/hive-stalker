@@ -31,7 +31,7 @@ jobs:
           name: Run Tests
           command: |
             mkdir /tmp/test-results
-            echo bundle exec rspec --format RspecJunitFormatter \
+            bundle exec rspec --format RspecJunitFormatter \
                               --out /tmp/test-results/rspec.xml \
                               --format progress
 
