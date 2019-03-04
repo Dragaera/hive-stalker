@@ -25,12 +25,6 @@ module HiveStalker
     # @return [Fixnum]
     attr_reader :experience
 
-    # Whether badges are enabled.
-    # 
-    # Not sure where this comes from.
-    # @return [TrueClass, FalseClass]
-    attr_reader :badges_enabled
-
     # Array of badges. Always empty so far.
     # @return [Array]
     attr_reader :badges
@@ -65,6 +59,17 @@ module HiveStalker
     # @return [Float]
     attr_reader :adagrad_sum
 
+    # Geographical latitude
+    # @return [Float]
+    attr_reader :latitude
+
+    # Geographical longitude
+    # @return [Float]
+    attr_reader :longitude
+
+    # Continent
+    # @return [String]
+    attr_reader :continent
 
     # Initialize a new instance of the class.
     #
@@ -77,7 +82,6 @@ module HiveStalker
       @score           = kwargs[:score]
       @level           = kwargs[:level]
       @experience      = kwargs[:experience]
-      @badges_enabled  = kwargs[:badges_enabled]
       @badges          = kwargs[:badges]
       @skill           = kwargs[:skill]
       @time_total      = kwargs[:time_total]
@@ -86,6 +90,9 @@ module HiveStalker
       @time_commander  = kwargs[:time_commander]
       @reinforced_tier = kwargs[:reinforced_tier]
       @adagrad_sum     = kwargs[:adagrad_sum]
+      @latitude        = kwargs[:latitude]
+      @longitude       = kwargs[:longitude]
+      @continent       = kwargs[:continent]
     end
   end
 end
