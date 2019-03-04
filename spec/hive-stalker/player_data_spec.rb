@@ -2,21 +2,25 @@ module HiveStalker
   RSpec.describe PlayerData do
     describe '#initialize' do
       it 'sets the various attributes' do
-        data = PlayerData.new({ :player_id=>455990, 
-                                :steam_id=>48221310, 
-                                :alias=>"|LZ| Morrolan", 
-                                :score=>4371, 
-                                :level=>12, 
-                                :experience=>95938, 
-                                :badges_enabled=>false, 
-                                :badges=>[], 
-                                :skill=>693, 
-                                :time_total=>33790, 
-                                :time_marine=>24110, 
-                                :time_alien=>9680, 
-                                :time_commander=>239, 
-                                :reinforced_tier=>nil, 
-                                :adagrad_sum=>0.0093})
+        data = PlayerData.new({
+          :player_id=>455990,
+          :steam_id=>48221310,
+          :alias=>"|LZ| Morrolan",
+          :score=>4371,
+          :level=>12,
+          :experience=>95938,
+          :badges=>[],
+          :skill=>693,
+          :time_total=>33790,
+          :time_marine=>24110,
+          :time_alien=>9680,
+          :time_commander=>239,
+          :reinforced_tier=>nil,
+          :adagrad_sum=>0.0093,
+          :latitude=>1,
+          :longitude=>2,
+          :continent=>'EU',
+        })
 
         expect(data.player_id).to eq 455990
         expect(data.steam_id).to eq 48221310
@@ -32,6 +36,9 @@ module HiveStalker
         expect(data.time_commander).to eq 239
         expect(data.reinforced_tier).to be_nil
         expect(data.adagrad_sum).to be_within(0.01).of(0.0093)
+        expect(data.latitude).to eq 1
+        expect(data.longitude).to eq 2
+        expect(data.continent).to eq 'EU'
       end
     end
   end

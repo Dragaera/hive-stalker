@@ -56,7 +56,6 @@ module HiveStalker
           score: raw_data.fetch('score'),
           level: raw_data.fetch('level'),
           experience: raw_data.fetch('xp'),
-          badges_enabled: raw_data.fetch('badges_enabled'),
           badges: raw_data.fetch('badges') || [],
           # With legacy users (who have not played since introduction of
           # Hive2), skill can be a float value.  Likely due to the
@@ -68,7 +67,10 @@ module HiveStalker
           time_alien: raw_data.fetch('alien_playtime'),
           time_commander: raw_data.fetch('commander_time'),
           reinforced_tier: raw_data.fetch('reinforced_tier'),
-          adagrad_sum: raw_data.fetch('adagrad_sum')
+          adagrad_sum: raw_data.fetch('adagrad_sum'),
+          latitude: raw_data.fetch('lat', 0).to_f,
+          longitude: raw_data.fetch('long', 0).to_f,
+          continent: raw_data.fetch('cont', ''),
         }
       rescue KeyError => e
         raise APIError, "Incomplete JSON received from API: #{ e.message }"

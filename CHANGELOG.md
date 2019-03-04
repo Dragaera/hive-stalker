@@ -8,6 +8,8 @@ glance - what to expact from upgrading to a new version.
 
 ### Added
 
+- Support for latitude / longitude / country fields.
+
 ### Changed
 
 ### Fixed
@@ -17,6 +19,8 @@ glance - what to expact from upgrading to a new version.
 ### Deprecated
 
 ### Removed
+
+- Support for now-removed `badges_enabled` field.
 
 
 ## [0.1.5] - 2016-01-15
