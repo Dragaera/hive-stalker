@@ -8,8 +8,6 @@ glance - what to expact from upgrading to a new version.
 
 ### Added
 
-- Support for latitude / longitude / country fields.
-
 ### Changed
 
 ### Fixed
@@ -17,6 +15,15 @@ glance - what to expact from upgrading to a new version.
 ### Security
 
 ### Deprecated
+
+### Removed
+
+
+## [0.2.0] - 2019-03-04
+
+### Added
+
+- Support for latitude / longitude / country fields.
 
 ### Removed
 
