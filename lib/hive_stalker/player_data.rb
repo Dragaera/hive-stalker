@@ -1,4 +1,6 @@
 module HiveStalker
+  SkillTier = Struct.new(:name, :rank)
+
   # Container for various player statistics. Essentially a glorified struct.
   class PlayerData
     # Player ID, probably NS2/Hive2-internal.
@@ -93,6 +95,36 @@ module HiveStalker
       @latitude        = kwargs[:latitude]
       @longitude       = kwargs[:longitude]
       @continent       = kwargs[:continent]
+    end
+
+    def skill_tier
+      # Use adagrad sum to get a lower bound for a player's skill.
+      skill = [0, @skill - 25 / Math.sqrt(adagrad_sum)].max
+
+      if @level < 20
+        SkillTier.new('Rookie', 0)
+
+      elsif skill < 551
+        SkillTier.new('Recruit', 1)
+
+      elsif skill < 1001
+        SkillTier.new('Frontiersman', 2)
+
+      elsif skill < 1601
+        SkillTier.new('Squad Leader', 3)
+
+      elsif skill < 2201
+        SkillTier.new('Veteran', 4)
+
+      elsif skill < 3001
+        SkillTier.new('Commandant', 5)
+
+      elsif skill < 4000
+        SkillTier.new('Special Ops', 6)
+
+      else
+        SkillTier.new('Sanji Survivor', 7)
+      end
     end
   end
 end
