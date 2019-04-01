@@ -41,5 +41,40 @@ module HiveStalker
         expect(data.continent).to eq 'EU'
       end
     end
+
+    describe '#skill_tier' do
+      it "returns the player's assigned skill tier" do
+        data = PlayerData.new(
+          level: 30,
+          skill: 1200,
+          adagrad_sum: 1,
+        )
+
+        expect(data.skill_tier.name).to eq 'Squad Leader'
+        expect(data.skill_tier.rank).to eq 3
+      end
+
+      it "returns the rookie tier if the player's level is below 20" do
+        data = PlayerData.new(
+          level: 10,
+          skill: 1200,
+          adagrad_sum: 1,
+        )
+
+        expect(data.skill_tier.name).to eq 'Rookie'
+        expect(data.skill_tier.rank).to eq 0
+      end
+
+      it "estimates skill using the adagrad sum" do
+        data = PlayerData.new(
+          level: 30,
+          skill: 1005,
+          adagrad_sum: 0.8,
+        )
+
+        expect(data.skill_tier.name).to eq 'Frontiersman'
+        expect(data.skill_tier.rank).to eq 2
+      end
+    end
   end
 end

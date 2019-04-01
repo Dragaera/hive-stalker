@@ -8,6 +8,9 @@ glance - what to expact from upgrading to a new version.
 
 ### Added
 
+- `PlayerData#skill_tier` which calculates and returns the player's assigned
+  skill tier.
+
 ### Changed
 
 ### Fixed
