@@ -97,9 +97,17 @@ module HiveStalker
       @continent       = kwargs[:continent]
     end
 
+    # Conservative estimate of a player's skill, using the sum of adagrad
+    # gradients. Works somewhat like a lower one-sided bound with indeterminate
+    # confidence.
+    def skill_estimate
+      # Use adagrad sum to get a lower bound for a player's skill.
+      [0, @skill - 25 / Math.sqrt(adagrad_sum)].max
+    end
+
     def skill_tier
       # Use adagrad sum to get a lower bound for a player's skill.
-      skill = [0, @skill - 25 / Math.sqrt(adagrad_sum)].max
+      skill = skill_estimate
 
       if @level < 20
         SkillTier.new('Rookie', 0)

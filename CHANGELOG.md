@@ -10,6 +10,8 @@ glance - what to expact from upgrading to a new version.
 
 - `PlayerData#skill_tier` which calculates and returns the player's assigned
   skill tier.
+- `PlayerData#skill_estimate` which calculates the lower-bound like estimate of
+  a player's skill.
 
 ### Changed
 

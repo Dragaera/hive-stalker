@@ -42,6 +42,28 @@ module HiveStalker
       end
     end
 
+    describe '#skill_estimate' do
+      it "returns a lower bound on the player's skill using their adagrad sum" do
+        data = PlayerData.new(
+          level: 20,
+          skill: 1000,
+          adagrad_sum: 0.9
+        )
+
+        expect(data.skill_estimate).to be_within(0.01).of(973.647)
+      end
+
+      it 'never returns a skill below 0' do
+        data = PlayerData.new(
+          level: 20,
+          skill: 10,
+          adagrad_sum: 0.1
+        )
+
+        expect(data.skill_estimate).to eq 0
+      end
+    end
+
     describe '#skill_tier' do
       it "returns the player's assigned skill tier" do
         data = PlayerData.new(
