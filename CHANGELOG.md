@@ -8,11 +8,6 @@ glance - what to expact from upgrading to a new version.
 
 ### Added
 
-- Support for per-team and per-position (field & commander) skill values
-- Support for skill tiers
-- `PlayerData#specific_skills` which returns a struct with such-computed values
-- `PlayerData#specific_skill_tiers` which returns a struct with such-computed skill tiers
-
 ### Changed
 
 ### Fixed
@@ -22,6 +17,16 @@ glance - what to expact from upgrading to a new version.
 ### Deprecated
 
 ### Removed
+
+
+## [0.3.0] - 2020-11-01
+
+### Added
+
+- Support for per-team and per-position (field & commander) skill values
+- Support for skill tiers
+- `PlayerData#specific_skills` which returns a struct with such-computed values
+- `PlayerData#specific_skill_tiers` which returns a struct with such-computed skill tiers
 
 
 ## [0.2.0] - 2019-03-04
