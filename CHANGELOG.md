@@ -8,6 +8,21 @@ glance - what to expact from upgrading to a new version.
 
 ### Added
 
+### Changed
+
+### Fixed
+
+### Security
+
+### Deprecated
+
+### Removed
+
+
+## [0.3.1] - 2020-11-01
+
+### Added
+
 - Add `pry` as development dependency.
 
 ### Changed
@@ -17,12 +32,6 @@ glance - what to expact from upgrading to a new version.
 ### Fixed
 
 - Clamp marine field & commander skill to `0`.
-
-### Security
-
-### Deprecated
-
-### Removed
 
 
 ## [0.3.0] - 2020-11-01
