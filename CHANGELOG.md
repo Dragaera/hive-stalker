@@ -8,7 +8,11 @@ glance - what to expact from upgrading to a new version.
 
 ### Added
 
+- Add `pry` as development dependency.
+
 ### Changed
+
+- Update Bundler.
 
 ### Fixed
 
