@@ -8,10 +8,10 @@ glance - what to expact from upgrading to a new version.
 
 ### Added
 
-- `PlayerData#skill_tier` which calculates and returns the player's assigned
-  skill tier.
-- `PlayerData#skill_estimate` which calculates the lower-bound like estimate of
-  a player's skill.
+- Support for per-team and per-position (field & commander) skill values
+- Support for skill tiers
+- `PlayerData#specific_skills` which returns a struct with such-computed values
+- `PlayerData#specific_skill_tiers` which returns a struct with such-computed skill tiers
 
 ### Changed
 
