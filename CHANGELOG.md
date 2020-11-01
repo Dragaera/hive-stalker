@@ -12,6 +12,8 @@ glance - what to expact from upgrading to a new version.
 
 ### Fixed
 
+- Clamp marine field & commander skill to `0`.
+
 ### Security
 
 ### Deprecated

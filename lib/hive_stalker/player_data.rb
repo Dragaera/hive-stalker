@@ -140,11 +140,11 @@ module HiveStalker
         # Marine
         TeamSkill.new(
           # Field
-          skill + skill_offset,
+          [skill + skill_offset, 0].max,
           skill_estimate(skill + skill_offset, adagrad_sum),
 
           # Commander
-          commander_skill + commander_skill_offset,
+          [commander_skill + commander_skill_offset, 0].max,
           skill_estimate(commander_skill + commander_skill_offset, commander_adagrad_sum),
         ),
       )

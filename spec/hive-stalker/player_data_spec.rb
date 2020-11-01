@@ -88,6 +88,20 @@ module HiveStalker
 
         expect(skill.alien.field).to eq 0
         expect(skill.alien.commander).to eq 0
+
+        skill = PlayerData.new(
+          level: 20,
+
+          skill: 200,
+          skill_offset: -240,
+          adagrad_sum: 0.9,
+          comm_skill: 400,
+          comm_skill_offset: -450,
+          comm_adagrad_sum: 0.4,
+        ).specific_skills
+
+        expect(skill.marine.field).to eq 0
+        expect(skill.marine.commander).to eq 0
       end
 
       it "returns lower bounds for each specific skill" do
