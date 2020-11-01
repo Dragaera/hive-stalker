@@ -62,12 +62,18 @@ module HiveStalker
           # normalization of skills, which happened shortly after Hive2 went
           # live.
           skill: raw_data.fetch('skill').to_i,
+          skill_offset: raw_data.fetch('skill_offset').to_i,
+          comm_skill: raw_data.fetch('comm_skill').to_i,
+          comm_skill_offset: raw_data.fetch('comm_skill_offset').to_i,
           time_total: raw_data.fetch('time_played'),
           time_marine: raw_data.fetch('marine_playtime'),
           time_alien: raw_data.fetch('alien_playtime'),
           time_commander: raw_data.fetch('commander_time'),
           reinforced_tier: raw_data.fetch('reinforced_tier'),
-          adagrad_sum: raw_data.fetch('adagrad_sum'),
+          # For accounts with no Hive2 rounds on record, the adagrad sum will be null.
+          adagrad_sum: raw_data.fetch('adagrad_sum') || 0,
+          # For people without a single comm round on record since Hive3, the comm adagrad sum might be null.
+          comm_adagrad_sum: raw_data.fetch('comm_adagrad_sum') || 0,
           latitude: raw_data.fetch('lat', 0).to_f,
           longitude: raw_data.fetch('long', 0).to_f,
           continent: raw_data.fetch('cont', ''),
